@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.google.gson.Gson;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -61,6 +63,10 @@ public class MainActivity extends AppCompatActivity {
         Log.d("test", "Username : " + user.getName());
         Address address = user.getAddress();
         Log.d("test", "User address : " + address.getCity());
+
+        Gson gson = new Gson();
+
+        Log.d("test", gson.toJson(user));
 
         return user;
     }
