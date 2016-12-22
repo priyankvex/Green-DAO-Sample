@@ -3,6 +3,7 @@ package com.wordpress.priyankvex.greendaosample;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Keep;
 import org.greenrobot.greendao.annotation.ToOne;
 import org.greenrobot.greendao.DaoException;
 
@@ -91,13 +92,14 @@ public class User {
     }
 
     /** To-one relationship, resolved on first access. */
-    @Generated(hash = 489389972)
+    @Keep
     public Address getAddress() {
         Long __key = this.addressId;
         if (address__resolvedKey == null || !address__resolvedKey.equals(__key)) {
             final DaoSession daoSession = this.daoSession;
             if (daoSession == null) {
-                throw new DaoException("Entity is detached from DAO context");
+                /*throw new DaoException("Entity is detached from DAO context");*/
+                return this.address;
             }
             AddressDao targetDao = daoSession.getAddressDao();
             Address addressNew = targetDao.load(__key);
